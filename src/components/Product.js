@@ -1,33 +1,28 @@
 import React, { Component } from "react"
 
 class Product extends Component {
-  handleUpVote = () => {
-    const { onVote, id } = this.props
-    onVote(id)
-  };
-
   render() {
-    const { productImageUrl, votes, url, title, description, submitterAvatarUrl } = this.props
+    const { data } = this.props
 
     return (
       <div className='item'>
         <div className='image'>
-          <img src={productImageUrl} />
+          <img src={data.productImageUrl} />
         </div>
         <div className='middle aligned content'>
           <div className='header'>
-            <a onClick={this.handleUpVote}>
+            <a>
               <i className='large caret up icon' />
             </a>
-            {votes}
+            {data.votes}
           </div>
           <div className='description'>
-            <a href={url}>{title}</a>
-            <p>{description}</p>
+            <a href={data.url}>{data.title}</a>
+            <p>{data.description}</p>
           </div>
           <div className='extra'>
             <span>Submitted by:</span>
-            <img className='ui avatar image' src={submitterAvatarUrl} />
+            <img className='ui avatar image' src={data.submitterAvatarUrl} />
           </div>
         </div>
       </div>
